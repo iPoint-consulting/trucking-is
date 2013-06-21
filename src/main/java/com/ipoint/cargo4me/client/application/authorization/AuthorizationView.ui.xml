@@ -1,0 +1,71 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g='urn:import:com.google.gwt.user.client.ui' ui:generateFormat='com.google.gwt.i18n.rebind.format.PropertiesFormat'
+	ui:generateKeys='com.google.gwt.i18n.rebind.keygen.MD5KeyGenerator'
+	ui:generateLocales='default' xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+
+	<ui:style field="style">
+		.byLeft {
+			float: left;
+		}
+		
+		.loginDialogFont {
+			font-family: "Arial";
+		}
+		
+		.phoneInfo {
+			font-size: 9px;
+			color: grey;
+			margin-bottom: 10px;
+			margin-left: 8px;
+		}
+		
+		.nomargin {
+			margin-bottom: 0px !important;
+		}
+		
+		.authorize_label {
+			font-size: 20px;
+			padding-bottom: 20px;
+		}
+		
+		.by_right {
+			float: left;
+			margin-left: 84px;
+		}
+	</ui:style>
+
+	<g:HTMLPanel>
+		<b:Alert visible="false" ui:field="loginAlert" animation="true"
+			type="ERROR" close="false"></b:Alert>
+		<b:Form addStyleNames="{style.loginDialogFont}" action="/j_spring_security_check"
+			styleName="form-horizontal" method="POST" ui:field="loginForm">
+			<b:ControlGroup>
+				<b:Controls>
+					<g:Label addStyleNames="{style.authorize_label}">Авторизация</g:Label>
+				</b:Controls>
+				<b:ControlLabel>Логин:</b:ControlLabel>
+				<b:Controls>
+					<b:TextBox ui:field="emailTextBox" placeholder="Email или телефон"
+						name="j_username" addStyleNames="{style.nomargin"></b:TextBox>
+					<g:Label addStyleNames="{style.phoneInfo}">Номер телефона - 10 цифр: +7 ХХХ ХХХ
+						ХХ ХХ</g:Label>
+				</b:Controls>
+			</b:ControlGroup>
+			<b:ControlGroup>
+				<b:ControlLabel>Пароль:</b:ControlLabel>
+				<b:Controls>
+					<b:PasswordTextBox ui:field="passwordTextBox"
+						placeholder="Пароль" name="j_password"></b:PasswordTextBox>
+				</b:Controls>
+			</b:ControlGroup>
+			<b:ControlGroup>
+				<b:Controls>
+					<b:Button ui:field="buttonEnter" addStyleNames="{style.byLeft}, redContentButton">Вход</b:Button>
+					<b:Button ui:field="buttonCancel" addStyleNames="{style.by_right}, greyContentButton">Отмена</b:Button>
+				</b:Controls>
+			</b:ControlGroup>
+		</b:Form>
+	</g:HTMLPanel>
+</ui:UiBinder>
